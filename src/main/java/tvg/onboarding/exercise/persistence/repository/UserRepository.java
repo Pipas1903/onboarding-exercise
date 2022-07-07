@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import tvg.onboarding.exercise.persistence.entity.UserEntity;
 
 @Repository
-public interface UserRepository extends JpaRepository<Long, UserEntity> {
+public interface UserRepository extends JpaRepository<UserEntity, Long> {
 }
