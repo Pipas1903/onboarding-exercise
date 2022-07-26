@@ -11,7 +11,7 @@ import java.util.Map;
 
 @Profile("!production")
 @Service
-public class MockRepository implements Repository<UserEntity> {
+public class MockUserRepository implements UserRepository<UserEntity> {
     private final Map<Long, UserEntity> userEntities = new HashMap<>();
     private static Long idGenerator = 0L;
 

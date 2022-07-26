@@ -8,7 +8,8 @@ import tvg.onboarding.exercise.converter.UserConverter;
 import tvg.onboarding.exercise.dto.CreateUserDto;
 import tvg.onboarding.exercise.dto.UserDetailsDto;
 import tvg.onboarding.exercise.persistence.entity.UserEntity;
-import tvg.onboarding.exercise.persistence.repository.MockRepository;
+import tvg.onboarding.exercise.persistence.repository.MockUserRepository;
+import tvg.onboarding.exercise.persistence.repository.UserRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,7 +20,7 @@ import java.util.stream.Collectors;
 @Profile("!production")
 public class UserServiceListImpl implements UserService {
 
-    private final MockRepository mockRepository;
+    private final UserRepository<UserEntity> mockRepository;
     private final UserConverter userConverter;
 
     @Override

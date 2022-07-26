@@ -6,11 +6,11 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 import tvg.onboarding.exercise.converter.UserConverter;
-import tvg.onboarding.exercise.dto.CreateUserDto;
-import tvg.onboarding.exercise.persistence.entity.UserEntity;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static tvg.onboarding.exercise.mockedData.MockedData.getMockedCreateUserDto;
+import static tvg.onboarding.exercise.mockedData.MockedData.getMockedUserEntity;
 
 @ExtendWith(MockitoExtension.class)
 public class UserConverterTests {
@@ -36,23 +36,10 @@ public class UserConverterTests {
         void shouldReturnUserEntity() {
             final var result = userConverter.convertDtoToUserEntity(getMockedCreateUserDto());
 
-            assertEquals("nome", result.getName());
+            assertEquals("eu", result.getName());
             assertNull(result.getId());
 
         }
-    }
-
-    private UserEntity getMockedUserEntity() {
-        return UserEntity.builder()
-                .id(1L)
-                .name("eu")
-                .build();
-    }
-
-    private CreateUserDto getMockedCreateUserDto() {
-        return CreateUserDto.builder()
-                .name("nome")
-                .build();
     }
 
 }

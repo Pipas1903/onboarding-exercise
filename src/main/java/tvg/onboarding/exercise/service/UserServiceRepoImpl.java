@@ -2,9 +2,7 @@ package tvg.onboarding.exercise.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
@@ -12,7 +10,7 @@ import tvg.onboarding.exercise.converter.UserConverter;
 import tvg.onboarding.exercise.dto.CreateUserDto;
 import tvg.onboarding.exercise.dto.UserDetailsDto;
 import tvg.onboarding.exercise.persistence.entity.UserEntity;
-import tvg.onboarding.exercise.persistence.repository.Repository;
+import tvg.onboarding.exercise.persistence.repository.UserDatabaseUserRepository;
 import tvg.onboarding.exercise.persistence.repository.UserRepository;
 
 import java.util.List;
@@ -24,7 +22,7 @@ import java.util.stream.Collectors;
 @Profile("production")
 public class UserServiceRepoImpl implements UserService {
 
-    private final Repository<UserEntity> userRepository;
+    private final UserRepository<UserEntity> userRepository;
     private final UserConverter userConverter;
 
     @Override
