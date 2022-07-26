@@ -3,6 +3,9 @@ package tvg.onboarding.exercise.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import tvg.onboarding.exercise.converter.UserConverter;
@@ -24,6 +27,7 @@ public class UserServiceRepoImpl implements UserService {
     private final UserConverter userConverter;
 
     @Override
+    @CacheEvict(cacheNames = "users", allEntries = true)
     public UserDetailsDto addNewUser(CreateUserDto createUserDto) {
         log.info("implementation for production was used");
         UserEntity user = userConverter.convertDtoToUserEntity(createUserDto);
@@ -32,6 +36,7 @@ public class UserServiceRepoImpl implements UserService {
         return userConverter.convertEntityToUserDetailsDto(savedUser);
     }
 
+    @Cacheable(cacheNames = "users")
     @Override
     public List<UserDetailsDto> getAllUsers() {
         log.info("implementation for production was used");
