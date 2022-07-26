@@ -26,7 +26,7 @@ public class UserServiceListImpl implements UserService {
     public UserDetailsDto addNewUser(CreateUserDto createUserDto) {
         log.info("default implementation was used");
         UserEntity user = userConverter.convertDtoToUserEntity(createUserDto);
-        final var savedUser = mockRepository.addNewUser(user);
+        final var savedUser = mockRepository.save(user);
         log.info("user successfully saved to user list");
         return userConverter.convertEntityToUserDetailsDto(savedUser);
     }
@@ -34,7 +34,7 @@ public class UserServiceListImpl implements UserService {
     @Override
     public List<UserDetailsDto> getAllUsers() {
         log.info("default implementation was used");
-        final var users = mockRepository.getAllUsers().stream()
+        final var users = mockRepository.findAll().stream()
                 .map(userConverter::convertEntityToUserDetailsDto)
                 .collect(Collectors.toList());
         log.info("Retrieved {} users from list", users.size());

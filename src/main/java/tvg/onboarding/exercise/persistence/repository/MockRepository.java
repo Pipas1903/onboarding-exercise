@@ -1,5 +1,6 @@
 package tvg.onboarding.exercise.persistence.repository;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import tvg.onboarding.exercise.persistence.entity.UserEntity;
 
@@ -8,20 +9,24 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Profile("!production")
 @Service
-public class MockRepository {
+public class MockRepository implements Repository<UserEntity> {
     private final Map<Long, UserEntity> userEntities = new HashMap<>();
     private static Long idGenerator = 0L;
 
-    public UserEntity addNewUser(UserEntity userEntity) {
+    @Override
+    public UserEntity save(UserEntity userEntity) {
         idGenerator++;
         userEntity.setId(idGenerator);
         userEntities.put(userEntity.getId(), userEntity);
         return userEntities.get(userEntity.getId());
     }
 
-    public List<UserEntity> getAllUsers() {
+    @Override
+    public List<UserEntity> findAll() {
         return new ArrayList<>(userEntities.values());
     }
+
 
 }

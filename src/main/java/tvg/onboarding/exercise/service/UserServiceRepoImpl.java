@@ -12,6 +12,7 @@ import tvg.onboarding.exercise.converter.UserConverter;
 import tvg.onboarding.exercise.dto.CreateUserDto;
 import tvg.onboarding.exercise.dto.UserDetailsDto;
 import tvg.onboarding.exercise.persistence.entity.UserEntity;
+import tvg.onboarding.exercise.persistence.repository.Repository;
 import tvg.onboarding.exercise.persistence.repository.UserRepository;
 
 import java.util.List;
@@ -23,7 +24,7 @@ import java.util.stream.Collectors;
 @Profile("production")
 public class UserServiceRepoImpl implements UserService {
 
-    private final UserRepository userRepository;
+    private final Repository<UserEntity> userRepository;
     private final UserConverter userConverter;
 
     @Override
@@ -40,7 +41,8 @@ public class UserServiceRepoImpl implements UserService {
     @Override
     public List<UserDetailsDto> getAllUsers() {
         log.info("implementation for production was used");
-        final var users = userRepository.findAll().stream()
+        final var users = userRepository.findAll()
+                .stream()
                 .map(userConverter::convertEntityToUserDetailsDto)
                 .collect(Collectors.toList());
         log.info("Retrieved {} users from database", users.size());
