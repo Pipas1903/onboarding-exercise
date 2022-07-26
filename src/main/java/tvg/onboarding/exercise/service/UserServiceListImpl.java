@@ -8,7 +8,6 @@ import tvg.onboarding.exercise.converter.UserConverter;
 import tvg.onboarding.exercise.dto.CreateUserDto;
 import tvg.onboarding.exercise.dto.UserDetailsDto;
 import tvg.onboarding.exercise.persistence.entity.UserEntity;
-import tvg.onboarding.exercise.persistence.repository.MockUserRepository;
 import tvg.onboarding.exercise.persistence.repository.UserRepository;
 
 import java.util.List;

@@ -23,7 +23,7 @@ import java.util.List;
 public class UserController {
     private final UserService userService;
 
-    @Operation(summary = "Get all users")
+    @Operation(summary = "Returns all users")
     @GetMapping("/users")
     public ResponseEntity<List<UserDetailsDto>> getAllUsers() {
         log.info("Request received to get all users");
@@ -32,7 +32,7 @@ public class UserController {
         return ResponseEntity.ok(users);
     }
 
-    @Operation(summary = "Create a new user")
+    @Operation(summary = "Creates a new user and saves it")
     @PostMapping("/users")
     public ResponseEntity<UserDetailsDto> addNewUser(@RequestBody CreateUserDto createUserDto) {
         log.info("Request received to add a new user");
