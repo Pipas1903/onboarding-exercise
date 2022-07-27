@@ -40,7 +40,7 @@ import static tvg.onboarding.exercise.mockedData.MockedData.getMockedUserEntityL
 @ContextConfiguration(classes = DefaultConfiguration.class)
 @Import({UserController.class, UserServiceListImpl.class, UserConverter.class})
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class UserControllerTests {
+public class UserControllerListImplTests {
 
     @LocalServerPort
     private int port;
@@ -136,3 +136,4 @@ public class UserControllerTests {
 
 
 }
+
