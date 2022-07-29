@@ -7,6 +7,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.server.LocalServerPort;
@@ -20,6 +22,7 @@ import tvg.onboarding.exercise.controller.UserController;
 import tvg.onboarding.exercise.converter.UserConverter;
 import tvg.onboarding.exercise.dto.UserDetailsDto;
 import tvg.onboarding.exercise.persistence.entity.UserEntity;
+import tvg.onboarding.exercise.persistence.repository.UserDatabaseUserRepository;
 import tvg.onboarding.exercise.persistence.repository.UserRepository;
 import tvg.onboarding.exercise.service.UserServiceRepoImpl;
 
@@ -59,7 +62,7 @@ public class UserControllerRepoImplTests {
     }
 
     @MockBean
-    private UserRepository userRepository;
+    private UserDatabaseUserRepository userRepository;
 
     @Nested
     class getAllUsers {

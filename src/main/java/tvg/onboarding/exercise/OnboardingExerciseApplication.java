@@ -15,6 +15,7 @@ public class OnboardingExerciseApplication extends SpringBootServletInitializer 
         SpringApplication.run(OnboardingExerciseApplication.class, args);
     }
 
+    @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(OnboardingExerciseApplication.class);
     }

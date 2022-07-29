@@ -16,7 +16,7 @@ public class MockUserRepository implements UserRepository<UserEntity> {
     private static Long idGenerator = 0L;
 
     @Override
-    public UserEntity save(UserEntity userEntity) {
+    public synchronized UserEntity save(UserEntity userEntity) {
         idGenerator++;
         userEntity.setId(idGenerator);
         userEntities.put(userEntity.getId(), userEntity);
